@@ -13,14 +13,16 @@ div, *header, h1, *section, *footer, a, form, span
 아래 이미지와 같이 로그인 Form을 생성하는 HTML코드를 작성하시오. 단, USERNAME 글자를 클릭하면 아이디를 입력하는 input에, PWD 글자를 클릭하면 비밀번호를 입력하는 input에 focusing 되도록 하시오.
 
 ```html
-<label for="USERNAME">USERNAME</label>
-<input type="text" id="USERNAME" name="USERNAME">
-<br>
+<form action="">
+  <label for="USERNAME">USERNAME</label>
+  <input type="text" id="USERNAME" name="USERNAME" placeholder="아이디를   입력해주세요">
+  <br>
 
-<label for="PWD">PWD</label>
-<input type="text" id="PWD" name="PWD">
+  <label for="PWD">PWD</label>
+  <input type="text" id="PWD" name="PWD">
 
-<input type="submit" value="로그인">
+  <input type="submit" value="로그인">
+</form>
 ```
 
 
