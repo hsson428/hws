@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  {% if request.resolver_match.url_name == 'create' %}
+    <h1>CREATE</h1>
+  {% elif request.resolver_match.url_name == 'update' %}
+    <h1>UPDATE</h1>
+  {% endif %}
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="제출">
+  </form>
+  {% comment %} index가 아니라 들어온 페이지로 리다이렉트해주고 싶군 그리고 create랑update에서 눌렀을때 다르게 {% endcomment %}
+  <a href="{% url 'articles:index' %}">[back]</a>
+{% endblock content %}
