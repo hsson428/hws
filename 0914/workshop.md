@@ -46,7 +46,7 @@ SELECT room_num, price FROM hotels ORDER BY price DESC LIMIT 2;
 #### 5) grade 별로 분류하고 분류된 grade 개수를 내림차순으로 조회하시오.
 
 ```
-SELECT grade, COUNT(*) FROM hotels GROUP BY grade ORDER BY COUNT(*) DESC;
+SELECT grade, COUNT(grade) FROM hotels GROUP BY grade ORDER BY COUNT(grade) DESC;
 ```
 
 
@@ -141,6 +141,8 @@ User.objects.filter(phone__startswith='010').count()
 user = User.objects.get(first_name='옥자', last_name='김')
 user.country = '경기도'
 user.save()
+
+User.objects.get(first_name='옥자', last_name='김').updqte(country='경기도')
 ```
 
 
@@ -205,7 +207,7 @@ User.objects.filter(country='경상북도').aggregate(Max('balance'))
 #### 17)제주특별자치도에 사는 사람 중 balance가 가장 많은 사람의 first_name을 구하시오. 
 
 ```
-User.objects.filter(country='제주특별자치도').aggregate(Max('balance'))
-User.objects.filter(country='제주특별자치도', balance=1000000).values('first_name')
+max_balance_for_jeju = User.objects.filter(country='제주특별자치도').aggregate(Max('balance'))
+User.objects.filter(country='제주특별자치도', balance=max_balance_for_jeju).values('first_name')
 ```
 
