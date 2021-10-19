@@ -79,7 +79,7 @@ User.objects.all()
 
 
 
-#### 2) id가 19인 사림의 age를 조회하시오.
+#### 2) id가 19인 사람의 age를 조회하시오.
 
 ```
 User.objects.filter(id=19).first().age
