@@ -11,6 +11,7 @@
 T
 F  PUT, DELETE 등 더 있다.
 F  create는 method이므로 uri에 표현하지 않는 것이 RESTful할 것 같다.
+   teams뒤 team도 없어야한다.
 ```
 
 

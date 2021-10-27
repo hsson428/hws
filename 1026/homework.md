@@ -28,7 +28,7 @@ REST API 디자인 설계 시 가장 중요한 항목을 2가지로 요약한다
 
 ```
 URI
-method
+HTTP method
 ```
 
 
