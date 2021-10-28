@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .done {text-decoration: line-through;}
+  </style>
+
+  <form action="#">
+    <input type="text" id="todo-input">
+    <button>+</button>
+    <ul></ul>
+  </form>
+
+  <script>
+    const form = document.querySelector('form')
+    const addToDo = function(event) {
+      event.preventDefault()
+      const input = document.querySelector('#todo-input')
+      const content = input.value
+      if (content.trim()) {
+        const li = document.createElement('li')
+        li.innerHTML = content
+        
+        const btn = document.createElement('button')
+        btn.innerHTML = 'X'
+        li.appendChild(btn)
+        
+        const ul = document.querySelector('ul')
+        ul.appendChild(li)
+        
+        btn.addEventListener('click', function(){
+          li.remove()
+        })
+
+        li.addEventListener('click', function(event){
+          event.target.classList.toggle('done')
+        })
+
+        form.reset()
+      } else {
+        alert('입력해주세요.')
+      }
+    }
+
+    form.addEventListener('submit', addToDo)
+
+  </script>
+</body>
+</html>
