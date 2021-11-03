@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>점심메뉴</h1>
+    <button @click="pickMenu">Pick One</button>
+    <p>{{ menu }}</p>
+
+    <hr>
+
+    <h1>로또</h1>
+    <button @click="getLuckyNumbers">Get Lucky Numbers</button>
+    <p v-if="luckyNumbers.length">{{ luckyNumbers }}</p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        menus: ['김치찌개', '국밥', '짜장면'],
+        menu: '김치찌개',
+        nums: 0,
+        luckyNumbers: [],
+      },
+      methods: {
+        pickMenu (menus) {
+          const num = _.random(this.menus.length-1)
+          this.menu = this.menus[num]
+        },
+        getLuckyNumbers () {
+          this.luckyNumbers = []
+          for (i=0; this.luckyNumbers.length!=6; i++) {
+            const num = _.random(1, 45)
+            if (!this.luckyNumbers.includes(num)){
+              this.luckyNumbers.push(num)
+            }
+
+          }
+
+        }
+      }
+    })
+  </script>
+</body>
+</html>
