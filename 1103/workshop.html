@@ -10,7 +10,7 @@
   <div id="app">
     <h1>점심메뉴</h1>
     <button @click="pickMenu">Pick One</button>
-    <p>{{ menu }}</p>
+    <p v-if="menu.length">{{ menu }}</p>
 
     <hr>
 
@@ -27,25 +27,27 @@
       el: '#app',
       data: {
         menus: ['김치찌개', '국밥', '짜장면'],
-        menu: '김치찌개',
+        menu: '',
         nums: 0,
         luckyNumbers: [],
       },
       methods: {
-        pickMenu (menus) {
-          const num = _.random(this.menus.length-1)
-          this.menu = this.menus[num]
+        pickMenu () {
+          // const num = _.random(this.menus.length-1)
+          // this.menu = this.menus[num]
+          this.menu = _.sample(this.menus)
         },
         getLuckyNumbers () {
           this.luckyNumbers = []
-          for (i=0; this.luckyNumbers.length!=6; i++) {
-            const num = _.random(1, 45)
-            if (!this.luckyNumbers.includes(num)){
-              this.luckyNumbers.push(num)
-            }
+          // for (i=0; this.luckyNumbers.length!=6; i++) {
+          //   const num = _.random(1, 45)
+          //   if (!this.luckyNumbers.includes(num)){
+          //     this.luckyNumbers.push(num)
+          //   }
 
-          }
-
+          // }
+          this.luckyNumbers = _.sampleSize(_.range(1,46), 6)
+          this.luckyNumbers = _.sortBy(this.luckyNumbers)
         }
       }
     })
