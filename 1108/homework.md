@@ -10,7 +10,7 @@ Web API 호출 등 Vanilla JS에서의 기능을 사용할 수 없다.
 ```
 
 ```
-T
+T -> F  mounted Hook에 대한 설명이다. created Hook은 생성되는 시점이다.
 T
 F
 ```
@@ -31,5 +31,7 @@ HTML History API를 사용해서 router를 구현한 것
 ```
 created!
 mounted!
+
+updated는 수정이 일어나야 실행된다
 ```
 
